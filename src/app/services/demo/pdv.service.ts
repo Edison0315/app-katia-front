@@ -12,6 +12,10 @@ export class PdvService {
     return this.http.get('http://localhost:9001/api/patient/metrics')
   }
   
+  // *******************
+  // Perfil demo services
+  // *******************
+
   getPatientMedicines(){
     return this.http.get('https://perfildemo.katiahealth.com/api/patient/2/medicines')
   }
@@ -22,6 +26,14 @@ export class PdvService {
 
   getPatientAlerts(){
     return this.http.get('https://perfildemo.katiahealth.com/api/patient/11391/risks')
+  }
+  
+  // ******************
+  // Localhost services
+  // ******************
+  
+  getFiles(){
+    return this.http.get('http://localhost:9001/api/files')
   }
 
 }

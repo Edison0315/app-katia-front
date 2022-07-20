@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FilesPageRoutingModule } from './files-routing.module';
 
 import { FilesPage } from './files.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FilesPageRoutingModule
+    FilesPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [FilesPage]
 })

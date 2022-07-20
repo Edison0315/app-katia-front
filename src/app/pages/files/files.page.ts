@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PdvService } from 'src/app/services/demo/pdv.service';
 
 @Component({
   selector: 'app-files',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilesPage implements OnInit {
 
-  constructor() { }
+	files: any;
 
-  ngOnInit() {
-  }
+	constructor(private pdv_service: PdvService) { }
+
+	ngOnInit() {
+		this.pdv_service.getFiles()
+			.subscribe((files: any) => {
+				files = files.files
+				let files_array = []
+
+				files.map((m: any) => {
+					files_array.push(m)
+				})
+
+				this.files = files_array
+			})
+	}
+
+	deleteFile(file){
+		console.log(file)
+	}
 
 }
