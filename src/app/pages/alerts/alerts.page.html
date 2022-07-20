@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+
+  <h3>Mis alertas</h3>
+
+  <ion-item *ngFor="let alert of alerts">
+
+    <ion-avatar slot="start">
+      <ion-img class="ion-item-medicines-img" src="assets/icon/alert.PNG"></ion-img>
+    </ion-avatar>
+
+    <ion-label>
+      <h3>{{ alert }}</h3>
+    </ion-label>
+
+  </ion-item>
+
+</ion-content>

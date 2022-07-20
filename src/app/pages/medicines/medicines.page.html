@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+
+  <h3>Mis medicinas</h3>
+
+  <ion-item *ngFor="let medicine of medicines">
+
+    <ion-avatar slot="start">
+      <ion-img class="ion-item-medicines-img" src="assets/icon/medicine.PNG"></ion-img>
+    </ion-avatar>
+
+    <ion-label>
+      <h3>{{ medicine.type }}</h3>
+      <p class="ion-item-medicines-p">
+        {{ medicine.date }}
+      </p>
+    </ion-label>
+
+  </ion-item>
+
+</ion-content>

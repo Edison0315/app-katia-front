@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+
+  <h3>Mis comorbilidades</h3>
+
+  <ion-item *ngFor="let comorbidity of comorbidities">
+
+    <ion-avatar slot="start">
+      <ion-img class="ion-item-medicines-img" src="assets/icon/comorbidity.PNG"></ion-img>
+    </ion-avatar>
+
+    <ion-label>
+      <h3>{{ comorbidity.type }}</h3>
+      <p class="ion-item-medicines-p">
+        {{ comorbidity.date }}
+      </p>
+    </ion-label>
+
+  </ion-item>
+
+</ion-content>

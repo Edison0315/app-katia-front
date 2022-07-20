@@ -1,0 +1,7 @@
+{
+  "name": "app-katia-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
