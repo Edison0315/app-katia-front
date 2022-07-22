@@ -36,4 +36,12 @@ export class PdvService {
     return this.http.get('http://localhost:9001/api/files')
   }
 
+  getUserById(){
+    return this.http.get('http://localhost:9001/api/users/62da27a378d64bb27c290b76')
+  }
+
+  getNews(){
+    return this.http.get('http://localhost:9001/api/news')
+  }
+
 }

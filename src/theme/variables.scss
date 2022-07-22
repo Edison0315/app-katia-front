@@ -248,3 +248,35 @@ ion-label p.ion-item-medicines-p {
 ion-label .item-option-file {
   font-size: 30px !important;
 }
+
+div.div-profile-container {
+  margin-bottom: 40px;
+}
+
+div.div-profile-container img{
+  width: 65% !important;
+}
+
+.active-click { 
+  margin: 2px auto;
+  padding: 15px;
+}
+
+.active-click:active { 
+  transition: 0.1s ease-in;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+// Custom classes to font size
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
