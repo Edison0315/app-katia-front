@@ -4,4 +4,142 @@
 
   <h3>Mis novedades</h3>
 
+  <ion-item-sliding *ngFor="let new of news">
+
+    <ion-item-options side="start">
+      <ion-item-option color="danger" (click)="deleteElement(new.uid)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="primary" (click)="editElement(new)">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <p class="news-list" (click)="showNew(new)">
+        <ion-icon name="megaphone-outline"></ion-icon>
+        {{ new.date }}
+      </p>
+    </ion-item>
+  </ion-item-sliding>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="megaphone-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-modal trigger="open-modal">
+    <ng-template>
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Novedad</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm(is_insert)" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        
+        <!-- Form section -->
+        <div>
+          <ion-item>
+            <ion-label>Tipo</ion-label>
+            <ion-select [(ngModel)]="type" class="custom-options">
+              <ion-select-option value="Temperatura">Temperatura</ion-select-option>
+              <ion-select-option value="Presion">Presion</ion-select-option>
+              <ion-select-option value="Mareo">Mareo</ion-select-option>
+              <ion-select-option value="Dolor de estomago">Dolor de estomago</ion-select-option>
+              <ion-select-option value="Dolor de cabeza">Dolor de cabeza</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        
+        <!-- Form section -->
+        <div>
+          <ion-item>
+            <ion-label>Nivel</ion-label>
+            <ion-select [(ngModel)]="level" class="custom-options">
+              <ion-select-option value="1">1 (Muy leve)</ion-select-option>>
+              <ion-select-option value="2">2 (Leve)</ion-select-option>>
+              <ion-select-option value="3">3 (Moderado)</ion-select-option>>
+              <ion-select-option value="4">4 (Intenso)</ion-select-option>>
+              <ion-select-option value="5">5 (Muy intenso)</ion-select-option>>
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <!-- Form section -->
+        <div>
+          <ion-item>
+            <ion-datetime 
+              minute-values="0,15,30,45" 
+              (ionChange)="dateSelected($event)"
+              [(ngModel)]="date"></ion-datetime>
+          </ion-item>
+         <!-- <br>
+          <ion-button (click)="onClick()">
+            Seleccionar fecha y hora
+          </ion-button> -->
+        </div>
+
+         <!-- Form section -->
+         <div>
+          <ion-item>
+            <ion-label>Comentarios</ion-label>
+            <ion-textarea [(ngModel)]="comments"></ion-textarea>
+          </ion-item>
+        </div>
+
+      </ion-content>
+
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Titutlo</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+    </ng-template>
+  </ion-modal>
+
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="4" [routerLink]="['/home']">
+      <div class="div-tabs">
+        <ion-icon name="home-outline"></ion-icon>
+        <br>
+        <ion-label class="fs-13">Inicio</ion-label>
+      </div>
+    </ion-col>
+    <ion-col size="4" [routerLink]="['/care-plan']">
+      <div class="div-tabs">
+        <ion-icon name="calendar-number-outline"></ion-icon>
+        <br>
+        <ion-label class="fs-13">Plan de cuidado</ion-label>
+      </div>
+    </ion-col>
+    <ion-col size="4" [routerLink]="['/news']">
+      <div class="div-tabs active">
+        <ion-icon name="megaphone-outline"></ion-icon>
+        <br>
+        <ion-label class="fs-13">Novedades</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>

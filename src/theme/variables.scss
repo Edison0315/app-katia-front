@@ -268,7 +268,47 @@ div.div-profile-container img{
   border-radius: 5px;
 }
 
+.news-list ion-icon{
+  margin-right: 10px;
+  font-size: 22px !important;
+  position: relative !important;
+  top: 5px !important;
+}
+
+h2.appoint-title ion-icon {
+  font-size: 16px !important;
+  position: relative !important;
+  top: 3px !important;
+}
+
+ion-footer {
+  color: black !important;
+  text-align: center !important;
+}
+
+div.active, div.active ion-icon {
+  color: black !important;
+}
+
+div.div-tabs {
+  padding: 4px 0px 2px 0px;
+  color: gray;
+}
+
+div.div-tabs ion-icon {
+  font-size: 24px !important;
+  color: gray;
+}
+
 // Custom classes to font size
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-13 {
+  font-size: 13px;
+}
+
 .fs-14 {
   font-size: 14px;
 }

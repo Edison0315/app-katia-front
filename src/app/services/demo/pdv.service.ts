@@ -27,7 +27,11 @@ export class PdvService {
   getPatientAlerts(){
     return this.http.get('https://perfildemo.katiahealth.com/api/patient/11391/risks')
   }
-  
+ 
+  getAppointments(){
+    return this.http.get('https://perfildemo.katiahealth.com/api/appointments/patient/2?program=%&goal=%&status=Activa')
+  }
+
   // ******************
   // Localhost services
   // ******************
@@ -42,6 +46,21 @@ export class PdvService {
 
   getNews(){
     return this.http.get('http://localhost:9001/api/news')
+  }
+  
+  // *********
+  // News CRUD
+  // *********
+  storeNews(data){
+    return this.http.post('http://localhost:9001/api/news', data)
+  }
+
+  deleteNews(uid){
+    return this.http.delete(`http://localhost:9001/api/news/${uid}`)
+  }
+
+  updateNews(uid, data){
+    return this.http.put(`http://localhost:9001/api/news/${uid}`, data)
   }
 
 }

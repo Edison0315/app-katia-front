@@ -117,3 +117,29 @@
   </ion-row>
 
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="4" [routerLink]="['/home']">
+      <div class="div-tabs active">
+        <ion-icon name="home-outline"></ion-icon>
+        <br>
+        <ion-label class="fs-13">Inicio</ion-label>
+      </div>
+    </ion-col>
+    <ion-col size="4" [routerLink]="['/care-plan']">
+      <div class="div-tabs">
+        <ion-icon name="calendar-number-outline"></ion-icon>
+        <br>
+        <ion-label class="fs-13">Plan de cuidado</ion-label>
+      </div>
+    </ion-col>
+    <ion-col size="4" [routerLink]="['/news']">
+      <div class="div-tabs">
+        <ion-icon name="megaphone-outline"></ion-icon>
+        <br>
+        <ion-label class="fs-13">Novedades</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>
