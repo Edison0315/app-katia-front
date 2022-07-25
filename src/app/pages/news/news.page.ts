@@ -25,6 +25,8 @@ export class NewsPage implements OnInit {
 
 	isModalOpen = false;
 
+	selected: {};
+
 	name: string;
 
 	news: any;
@@ -101,7 +103,18 @@ export class NewsPage implements OnInit {
 
 	showNew(data) {
 		this.isModalOpen     = true;
-		console.log(data)
+		this.selected        = data
+	}
+
+	transformTime(time){
+		let timee = time
+		timee = time.split('.')
+
+		if(timee.length > 1){
+			return timee[0]
+		}
+
+		return timee
 	}
 
 	closeModal(){

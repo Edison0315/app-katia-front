@@ -1,10 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PdvService {
+
+  /*headers: {} = {
+    'Authorization': 'PBs5zO5qdO2pGK38TEQ2FpR4fM1WHte2qEAsQ8ByavDRU5pnwGOQF23uPEOYW831C3pjfGxMN854XtDx'
+  }*/
+
+  headers: HttpHeaders = new HttpHeaders({
+    'Authorization': 'PBs5zO5qdO2pGK38TEQ2FpR4fM1WHte2qEAsQ8ByavDRU5pnwGOQF23uPEOYW831C3pjfGxMN854XtDx'
+  })
 
   constructor(private http: HttpClient) { }
 
@@ -63,4 +71,14 @@ export class PdvService {
     return this.http.put(`http://localhost:9001/api/news/${uid}`, data)
   }
 
+  // ****************
+  // appointmets CRUD
+  // ****************
+  storeAppointment(data){
+    return this.http.post(`https://perfildemo.katiahealth.com/api/appointments/schedule/patient/2`, data, { headers: this.headers })
+  }
+
+  updateAppointment(id, data){
+    return this.http.put(`https://perfildemo.katiahealth.com/api/appointments/${id}/date`, data, { headers: this.headers })
+  }
 }

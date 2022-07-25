@@ -15,8 +15,8 @@
       </ion-item-option>
     </ion-item-options>
 
-    <ion-item>
-      <p class="news-list" (click)="showNew(new)">
+    <ion-item (click)="showNew(new)">
+      <p class="news-list">
         <ion-icon name="megaphone-outline"></ion-icon>
         {{ new.date }}
       </p>
@@ -106,12 +106,38 @@
 
       <ion-header>
         <ion-toolbar>
-          <ion-title>Titutlo</ion-title>
-          <ion-buttons slot="end">
+          <ion-title>Detalle de la novedad</ion-title>
+          <ion-buttons slot="start">
             <ion-button (click)="closeModal()">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
+
+      <ion-content class="ion-padding">
+          
+          <ion-row>
+            <ion-col size="5">
+              <ion-img src="/assets/icon/news/estomago.PNG"></ion-img>
+            </ion-col>
+            <ion-col size="7">
+              <h3>{{ selected.type }}</h3>
+              <p>
+                <b>Nivel:</b> {{ selected.level }}
+              </p>
+              <p>
+                <b>Comentarios:</b> {{ selected.comments }}  
+              </p>
+              <p>
+                <b>Fecha:</b> {{ selected.date }}  
+              </p>
+              <p>
+                <b>Hora:</b> {{ transformTime(selected.time) }}  
+              </p>
+            </ion-col>
+          </ion-row>
+
+      </ion-content>
+
 
     </ng-template>
   </ion-modal>
