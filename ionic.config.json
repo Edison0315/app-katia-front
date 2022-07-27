@@ -1,7 +1,10 @@
 {
   "name": "app-katia-front",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }

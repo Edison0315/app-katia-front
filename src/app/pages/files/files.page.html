@@ -4,12 +4,6 @@
 
   <h3>Mis adjuntos</h3>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
   <ion-item-sliding *ngFor="let file of files">
 
     <ion-item-options side="start">
@@ -30,7 +24,7 @@
         </p>
       </ion-label>
 
-      <ion-label slot="end">
+      <ion-label slot="end" (click)="showFile(file)">
         <ion-icon class="item-option-file" slot="start" name="image-outline"></ion-icon>
       </ion-label>
 
@@ -38,8 +32,66 @@
 
   </ion-item-sliding>
 
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Detalles de archivo</ion-title>
+          <ion-buttons slot="start">
+            <ion-button (click)="closeModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        
+        <ion-card>
+
+          <img src="{{ file.url }}" alt="Blood">
+
+          <ion-card-header>
+            <p>Nombre del archivo: {{ file.name }} </p>
+            <p>Tipo de archivo: {{ file.file_type }} </p>
+            <p>Fecha de creacion: {{ file.created_at }} </p>
+          </ion-card-header>
+      
+        </ion-card>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isAddModalOpen">
+    <ng-template>
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar archivos</ion-title>
+          <ion-buttons slot="start">
+            <ion-button (click)="closeModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-row>
+          <ion-col size="6">
+            <ion-card>
+              <img src="{{ tempImage }}">
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-button (click)="camara()">
+          Tomar foto!
+        </ion-button>
+      </ion-content>
+
+    </ng-template>
+  </ion-modal>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button (click)="addFile()">
       <ion-icon name="camera-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

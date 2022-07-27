@@ -7,18 +7,17 @@
   <div class="ion-text-center div-profile-container">
     <img src="assets/icon/girl.png" alt="Profile">
     <p class="fs-14"> {{ user.name }} {{ user.last_name }} </p>
-    <p class="fs-14"> {{ user.email }} </p>
+    <p class="fs-14 medical-email"> {{ user.email }} </p>
+    <p class="fs-14 medical-name"> 
+      <ion-icon name="medical-outline"></ion-icon> 
+      Daniela Vargas 
+    </p>
     <p class="fs-14"> {{ user.phone }} </p>
   </div>
 
   <p (click)="updateProfile()" class="active-click">
     <ion-icon name="settings-outline"></ion-icon> 
     Editar perfil 
-  </p>
-
-  <p (click)="changePassword()" class="active-click"> 
-    <ion-icon name="lock-closed-outline"></ion-icon> 
-    Cambiar contraseña 
   </p>
 
 </ion-content>

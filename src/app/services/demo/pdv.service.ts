@@ -6,10 +6,6 @@ import { Injectable } from '@angular/core';
 })
 export class PdvService {
 
-  /*headers: {} = {
-    'Authorization': 'PBs5zO5qdO2pGK38TEQ2FpR4fM1WHte2qEAsQ8ByavDRU5pnwGOQF23uPEOYW831C3pjfGxMN854XtDx'
-  }*/
-
   headers: HttpHeaders = new HttpHeaders({
     'Authorization': 'PBs5zO5qdO2pGK38TEQ2FpR4fM1WHte2qEAsQ8ByavDRU5pnwGOQF23uPEOYW831C3pjfGxMN854XtDx'
   })
@@ -17,7 +13,7 @@ export class PdvService {
   constructor(private http: HttpClient) { }
 
   getPatientMetrics(){
-    return this.http.get('http://localhost:9001/api/patient/metrics')
+    return this.http.get('https://app-katia.herokuapp.com/api/patient/metrics')
   }
   
   // *******************
@@ -45,30 +41,30 @@ export class PdvService {
   // ******************
   
   getFiles(){
-    return this.http.get('http://localhost:9001/api/files')
+    return this.http.get('https://app-katia.herokuapp.com/api/files')
   }
 
   getUserById(){
-    return this.http.get('http://localhost:9001/api/users/62da27a378d64bb27c290b76')
+    return this.http.get('https://app-katia.herokuapp.com/api/users/62da27a378d64bb27c290b76')
   }
 
   getNews(){
-    return this.http.get('http://localhost:9001/api/news')
+    return this.http.get('https://app-katia.herokuapp.com/api/news')
   }
   
   // *********
   // News CRUD
   // *********
   storeNews(data){
-    return this.http.post('http://localhost:9001/api/news', data)
+    return this.http.post('https://app-katia.herokuapp.com/api/news', data)
   }
 
   deleteNews(uid){
-    return this.http.delete(`http://localhost:9001/api/news/${uid}`)
+    return this.http.delete(`https://app-katia.herokuapp.com/api/news/${uid}`)
   }
 
   updateNews(uid, data){
-    return this.http.put(`http://localhost:9001/api/news/${uid}`, data)
+    return this.http.put(`https://app-katia.herokuapp.com/api/news/${uid}`, data)
   }
 
   // ****************
@@ -80,5 +76,12 @@ export class PdvService {
 
   updateAppointment(id, data){
     return this.http.put(`https://perfildemo.katiahealth.com/api/appointments/${id}/date`, data, { headers: this.headers })
+  }
+
+  // **********
+  // Files CRUD
+  // **********
+  deleteFile(uid){
+    return this.http.delete(`https://app-katia.herokuapp.com/api/files/${uid}`)
   }
 }
