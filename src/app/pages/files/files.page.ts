@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { PdvService } from 'src/app/services/demo/pdv.service';
+import { format } from 'date-fns'
 
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 
@@ -23,7 +24,11 @@ export class FilesPage implements OnInit {
 
 	loading: any;
 
+	name: any;
 	tempImage: any;
+	file_type: any;
+
+	today: string = format(new Date(), 'yyyy-MM-dd')
 
 	constructor(private pdv_service: PdvService,
 		private loadingCtrl: LoadingController,
@@ -105,6 +110,19 @@ export class FilesPage implements OnInit {
 		}, (err) => {
 		// Handle error
 		});
+	}
+
+	confirm(){
+
+		/*const new_file = {
+			file: this.name,
+			name: this.name,
+			file_type: this.file_type,
+			created_at: this.today,
+			updated_at: this.today
+		}*/
+
+		console.log(this.tempImage)
 	}
 
 }

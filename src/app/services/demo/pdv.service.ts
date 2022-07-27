@@ -84,4 +84,8 @@ export class PdvService {
   deleteFile(uid){
     return this.http.delete(`https://app-katia.herokuapp.com/api/files/${uid}`)
   }
+
+  storeFile(data){
+    return this.http.post(`https://app-katia.herokuapp.com/api/files/`, data)
+  }
 }

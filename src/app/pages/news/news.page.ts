@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { PdvService } from 'src/app/services/demo/pdv.service';
-import { format, parseISO, formatDistance, formatRelative, subDays } from 'date-fns'
+import { format } from 'date-fns'
 
 
 @Component({
