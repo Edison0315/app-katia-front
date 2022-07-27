@@ -23,6 +23,8 @@ export class ProfilePage implements OnInit {
     	uid:        ""
 	};
 
+	isModalOpen: boolean = false
+
 	constructor(private pdv_service: PdvService) { }
 
 	ngOnInit() {
@@ -33,12 +35,25 @@ export class ProfilePage implements OnInit {
 		})
 	}
 
-	updateProfile(){
-		console.log('updateProfile')
+	cancel(){
+		this.isModalOpen = false
 	}
 
-	changePassword(){
-		console.log('changePassword')
+	editProfile(){
+		this.isModalOpen = true
 	}
+	
+	updateProfile(){	
 
+		const { name, last_name, email, phone } = this.user
+
+		const obj = { name, last_name, email, phone }
+
+		this.pdv_service.updateUser(obj)
+		.subscribe((message: any) => {
+			this.cancel()
+		})
+
+
+	}
 }

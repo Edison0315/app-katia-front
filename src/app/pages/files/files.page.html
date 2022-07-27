@@ -72,7 +72,11 @@
           </ion-buttons>
           <ion-title>Agregar archivos</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+            <ion-button (click)="confirm()" [strong]="true">
+              Guardar
+              &nbsp;
+              <ion-icon color="success" name="save-outline"></ion-icon>
+            </ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
