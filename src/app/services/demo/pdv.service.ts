@@ -6,14 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class PdvService {
 
+  // url: string = `http://localhost:3000/api`;
+  url: string = 'https://app-katia.herokuapp.com/api';
+
   headers: HttpHeaders = new HttpHeaders({
     'Authorization': 'PBs5zO5qdO2pGK38TEQ2FpR4fM1WHte2qEAsQ8ByavDRU5pnwGOQF23uPEOYW831C3pjfGxMN854XtDx'
   })
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient) { }
 
   getPatientMetrics(){
-    return this.http.get('https://app-katia.herokuapp.com/api/patient/metrics')
+    return this.http.get(`${this.url}/patient/metrics`)
   }
   
   // *******************
@@ -41,30 +45,30 @@ export class PdvService {
   // ******************
   
   getFiles(){
-    return this.http.get('https://app-katia.herokuapp.com/api/files')
+    return this.http.get(`${this.url}/files`)
   }
 
   getUserById(){
-    return this.http.get('https://app-katia.herokuapp.com/api/users/62da27a378d64bb27c290b76')
+    return this.http.get(`${this.url}/users/62da27a378d64bb27c290b76`)
   }
 
   getNews(){
-    return this.http.get('https://app-katia.herokuapp.com/api/news')
+    return this.http.get(`${this.url}/news`)
   }
   
   // *********
   // News CRUD
   // *********
   storeNews(data){
-    return this.http.post('https://app-katia.herokuapp.com/api/news', data)
+    return this.http.post(`${this.url}/news`, data)
   }
 
   deleteNews(uid){
-    return this.http.delete(`https://app-katia.herokuapp.com/api/news/${uid}`)
+    return this.http.delete(`${this.url}/news/${uid}`)
   }
 
   updateNews(uid, data){
-    return this.http.put(`https://app-katia.herokuapp.com/api/news/${uid}`, data)
+    return this.http.put(`${this.url}/news/${uid}`, data)
   }
 
   // ****************
@@ -82,10 +86,26 @@ export class PdvService {
   // Files CRUD
   // **********
   deleteFile(uid){
-    return this.http.delete(`https://app-katia.herokuapp.com/api/files/${uid}`)
+    return this.http.delete(`${this.url}/files/${uid}`)
   }
 
   storeFile(data){
-    return this.http.post(`https://app-katia.herokuapp.com/api/files/`, data)
+
+    const formData = new FormData()
+    formData.append('file', data.file)
+    formData.append('name', data.name)
+    formData.append('file_type', data.file_type)
+    formData.append('created_at', data.created_at)
+    formData.append('updated_at', data.updated_at)
+
+    /*const options: FileUploadOptions = {
+      fileKey: 'file'
+    }
+
+    const fileTransfer: FileTransferObject = this.fileTransfer.create();
+
+    fileTransfer.upload(data.file, `http://localhost:3000/api/files/`, options)*/
+
+    return this.http.post(`${this.url}/files/`, formData)
   }
 }

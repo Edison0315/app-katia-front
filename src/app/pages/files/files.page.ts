@@ -26,6 +26,7 @@ export class FilesPage implements OnInit {
 
 	name: any;
 	tempImage: any;
+	imageData: any = '/assets/logo.png';
 	file_type: any;
 
 	today: string = format(new Date(), 'yyyy-MM-dd')
@@ -106,6 +107,7 @@ export class FilesPage implements OnInit {
 
 			const img = window.Ionic.WebView.convertFileSrc(imageData)
 			this.tempImage = img
+			this.imageData = imageData
 
 		}, (err) => {
 		// Handle error
@@ -113,16 +115,18 @@ export class FilesPage implements OnInit {
 	}
 
 	confirm(){
-
-		/*const new_file = {
-			file: this.name,
+		const new_file = {
+			file: this.imageData,
 			name: this.name,
 			file_type: this.file_type,
 			created_at: this.today,
 			updated_at: this.today
-		}*/
+		}
 
-		console.log(this.tempImage)
+		this.pdv_service.storeFile(new_file)
+		.subscribe((message: any) => {
+			console.log(message)
+		})
 	}
 
 }
