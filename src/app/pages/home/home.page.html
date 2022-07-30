@@ -26,15 +26,15 @@
             <ion-card-title>
               <ng-container *ngIf="metric.checked === 0">
                 <h5>
-                  Controlado
-                  <ion-icon class="icon-check" name="thumbs-up-outline" color="success"></ion-icon>  
+                  Descontrolado
+                  <ion-icon class="icon-check" name="thumbs-down-outline" color="danger"></ion-icon>  
                 </h5>
               </ng-container>
               
               <ng-container *ngIf="metric.checked === 1">
                 <h5>
-                  Descontrolado
-                  <ion-icon name="thumbs-down-outline" color="danger"></ion-icon>  
+                  Controlado
+                  <ion-icon name="thumbs-up-outline" color="success"></ion-icon>  
                 </h5>
               </ng-container>
             </ion-card-title>

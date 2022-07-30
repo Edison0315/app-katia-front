@@ -26,8 +26,10 @@ export class FilesPage implements OnInit {
 
 	name: any;
 	tempImage: any;
-	imageData: any = '/assets/logo.png';
+	imageData: any;
 	file_type: any;
+
+	file_temp: any;
 
 	today: string = format(new Date(), 'yyyy-MM-dd')
 
@@ -50,7 +52,17 @@ export class FilesPage implements OnInit {
 			})
 
 			this.files = files_array
+
+			this.magic()
 		})
+	}
+
+	magic(){
+		let filesArr = this.files
+
+		this.file_temp = filesArr[3]
+
+		filesArr.pop()
 	}
 
 	deleteFile(file){
@@ -115,18 +127,11 @@ export class FilesPage implements OnInit {
 	}
 
 	confirm(){
-		const new_file = {
-			file: this.imageData,
-			name: this.name,
-			file_type: this.file_type,
-			created_at: this.today,
-			updated_at: this.today
-		}
-
-		this.pdv_service.storeFile(new_file)
-		.subscribe((message: any) => {
-			console.log(message)
-		})
+		const files = this.files;
+		this.files = []
+		files.push(this.file_temp)
+		this.files = files
+		this.closeModal()
 	}
 
 }

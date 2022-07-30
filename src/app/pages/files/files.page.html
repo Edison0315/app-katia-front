@@ -38,8 +38,8 @@
       <ion-header>
         <ion-toolbar>
           <ion-title>Detalles de archivo</ion-title>
-          <ion-buttons slot="start">
-            <ion-button (click)="closeModal()">Close</ion-button>
+          <ion-buttons (click)="closeModal()" slot="start">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -68,7 +68,9 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="closeModal()">Close</ion-button>
+            <ion-button (click)="closeModal()">
+              <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+            </ion-button>
           </ion-buttons>
           <ion-title>Agregar archivos</ion-title>
           <ion-buttons slot="end">
